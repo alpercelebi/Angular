@@ -1,0 +1,56 @@
+<div class="container" >
+
+    <div class="row">
+        <div class="col-md-10" style="border: 1px solid; margin: auto;">
+            <p style="text-align: center;"><b>Api GetAll</b></p>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">İçerik</th>
+                    <th scope="col">Tarih</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of dizi">
+                    <th scope="row">{{item['id']}}</th>
+                    <td>{{item['content']}}</td>
+                    <td>{{item['created']}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+        </div>
+    </div>
+<br>
+    <div class="row">
+    <div class="col-md-10" style="margin: auto;">
+      <p style="text-align: center;"><b>Api Post</b></p>
+      <form #addtask="ngForm">
+        <div class="form-group">
+          <label>Görev İçeriği</label>
+          <input type="text" class="form-control" required [(ngModel)]="icerik" name="icerik" placeholder="İçerik...">
+        </div>
+        <div class="form-group">
+            <label>Tarih</label>
+            <input type="datetime-local"[(ngModel)]="tarih" name="tarih" required class="form-control">
+        </div>
+        <button type="button" [disabled]="!addtask.valid" (click)="PostAdd(icerik,tarih)" class="button btn-primary form-control">Ekle</button>
+      </form>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10" style="margin: auto;">
+        <p style="text-align: center;"><b>Api Delete</b></p>
+        <form #deletetask="ngForm">
+          <div class="form-group">
+            <label>İçerik İd</label>
+            <input type="number" class="form-control" name="icerikid" required  [(ngModel)]="icerikid"  placeholder="Id..">
+          </div>
+          <button type="button" [disabled]="!deletetask.valid" (click)="PostDelete(icerikid)" class="button btn-primary form-control">Sil</button>
+        </form>
+      </div>
+      </div>
+
+
+</div>
